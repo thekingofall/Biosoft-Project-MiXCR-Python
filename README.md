@@ -21,16 +21,15 @@ Core algorithms run in Python with NumPy and bundled references. Java is used se
 
 ## The workflow
 
-```mermaid
-flowchart LR
-    A["FASTQ / FASTQ.gz"] --> B["V(D)J alignment"]
-    B --> C["Clone assembly"]
-    B --> D["Partial-read overlap"]
-    D --> C
-    C --> E["Contig reconstruction"]
-    C --> F["Clone table + read assignments"]
-    E --> G["FASTA + annotated targets"]
-```
+![Human immune-receptor reads flow through Python V(D)J alignment, optional overlap assembly, clone assembly and optional contig reconstruction. A separate lane compares the original and Python programs.](docs/figures/workflow.png)
+
+*Workflow overview. Gene names and sequence cartoons are illustrative. Clone counts 12 and 8 come from the bundled 20-read synthetic example.* [Download PDF](docs/figures/workflow.pdf)
+
+**Start with reads.** Supply single or paired human TCR/BCR FASTQ files. Alignment finds compatible V/D/J/C gene segments and identifies the CDR3 junction; some receptor loci use V and J without a D segment.
+
+**Recover clones and sequences.** Assembly groups reads into clonotypes and records each read's assignment. Partial-read overlap and contig reconstruction are optional steps. Tables support abundance analysis, while annotated sequences make the result inspectable.
+
+**Check the evidence.** The lower lane feeds the same FASTQ to the original 3.0.13 program and the Python implementation, then compares scientific fields. This independent development check establishes the documented tested cases.
 
 | Capability | Available in this release |
 | :--- | :--- |

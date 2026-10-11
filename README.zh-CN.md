@@ -21,16 +21,15 @@ Python 3.10+ · 版本 0.2.0 · MiXCR 3.0.13 科研重建
 
 ## 分析流程
 
-```mermaid
-flowchart LR
-    A["FASTQ / FASTQ.gz"] --> B["V(D)J alignment"]
-    B --> C["Clone assembly"]
-    B --> D["Partial-read overlap"]
-    D --> C
-    C --> E["Contig reconstruction"]
-    C --> F["Clone table + read assignments"]
-    E --> G["FASTA + annotated targets"]
-```
+![人类免疫受体 reads 经过 Python V(D)J 比对、可选的部分读段拼接、克隆组装和 contig 重建；下方独立流程对照原版与 Python 结果。](docs/figures/workflow.png)
+
+*流程总览。图中的基因名称与序列用于示意；克隆计数 12 和 8 来自仓库随附的 20 条合成 reads 示例。* [下载 PDF](docs/figures/workflow.pdf)
+
+**从 reads 开始。** 输入人类 TCR/BCR 的单端或双端 FASTQ。程序寻找匹配的 V/D/J/C 基因片段，并识别 CDR3 连接区；部分受体链由 V、J 重排形成，不包含 D 片段。
+
+**得到克隆与序列。** 组装步骤将 reads 归入克隆，同时记录每条 read 的去向。部分读段重叠拼接和 contig 重建可以按需加入。克隆表用于查看丰度，注释序列用于检查具体重建结果。
+
+**理解验证依据。** 下方流程将同一份 FASTQ 分别交给原版 3.0.13 与 Python 实现，再比较科学结果字段。这是开发阶段的独立对照，证据范围见验证报告中的具体数据集与配置。
 
 | 能力 | 当前支持 |
 | :--- | :--- |
