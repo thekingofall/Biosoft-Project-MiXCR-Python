@@ -1,0 +1,381 @@
+{
+  "schema_version": 1,
+  "project": "Biosoft-Project-MiXCR-Python",
+  "version": "0.2.0",
+  "recorded_date": "2026-10-12",
+  "evidence_status": {
+    "workflow_tables": "historical_local_run_summary",
+    "published_tests": "packaged_regression_inputs",
+    "full_historical_fastq_runs_bundled": false,
+    "original_executable_bundled": false,
+    "interpretation": "Zero observed mismatches in measured fields establishes the listed finite cases, without a claim of universal equivalence."
+  },
+  "reference": {
+    "software": "MiXCR",
+    "version": "3.0.13",
+    "executable_commit": "f61422609eb4743e1e55ad3fb12ab51e34952b62",
+    "original_jar_sha256": "1526a6d36221e86b775e39831b5ebaab6d5877639212c672bef2049a3fd37149",
+    "official_source_tag": "v3.0.13",
+    "official_source_commit": "045e9afdb83f99a7c39b2e75807736c4632aa344",
+    "recorded_revision_comparison": "CHANGELOG and POM changes; algorithm source matched",
+    "human_reference": "repseqio.v1.6"
+  },
+  "historical_environment": {
+    "os": "Windows 11",
+    "python": "3.12.7",
+    "numpy": "2.4.6",
+    "java_major": 21
+  },
+  "measured_fields": {
+    "alignments": [
+      "success_or_failure",
+      "all_retained_V_D_J_C_gene_hits_and_scores",
+      "CDR3_nucleotide_sequence",
+      "CDR3_amino_acid_sequence",
+      "CDR3_quality"
+    ],
+    "clones": [
+      "retained_gene_hits_and_scores",
+      "CDR3_sequence_translation_quality",
+      "count",
+      "fraction"
+    ],
+    "assignments": [
+      "clone_membership",
+      "mapping_type"
+    ]
+  },
+  "comparison_rules": {
+    "baseline_gene_hits": "normalize equally scoring gene names as sets",
+    "baseline_clone_matching": "CDR3",
+    "limitations": "Baseline comparison does not establish all tie orders or resolve arbitrary separated same-CDR3 clones; dedicated extension cases test selected separation settings.",
+    "check_counts": "Comparator field-check counters; not independent biological samples"
+  },
+  "fastq_workflows": [
+    {
+      "id": "synthetic-trb",
+      "label": "Synthetic TRB, single-end",
+      "input_unit": "reads",
+      "v_feature": "VRegionWithP",
+      "passed": true,
+      "counts": {
+        "alignment_fields_checked": 7252,
+        "clone_fields_checked": 36,
+        "assignment_fields_checked": 2075,
+        "original_aligned": 1036,
+        "python_aligned": 1036,
+        "original_clones": 4,
+        "python_clones": 4,
+        "python_input_reads": 1039,
+        "mismatch_count": 0
+      },
+      "evidence_status": "historical_local_run_summary"
+    },
+    {
+      "id": "synthetic-paired",
+      "label": "Synthetic TRB, overlapping paired-end",
+      "input_unit": "read_pairs",
+      "v_feature": "VRegionWithP",
+      "passed": true,
+      "counts": {
+        "alignment_fields_checked": 7252,
+        "clone_fields_checked": 36,
+        "assignment_fields_checked": 2072,
+        "original_aligned": 1036,
+        "python_aligned": 1036,
+        "original_clones": 4,
+        "python_clones": 4,
+        "python_input_reads": 1036,
+        "mismatch_count": 0
+      },
+      "evidence_status": "historical_local_run_summary"
+    },
+    {
+      "id": "official-trb-single",
+      "label": "Official TRB, single-end",
+      "input_unit": "reads",
+      "v_feature": "VRegionWithP",
+      "passed": true,
+      "counts": {
+        "alignment_fields_checked": 700,
+        "clone_fields_checked": 198,
+        "assignment_fields_checked": 122,
+        "original_aligned": 100,
+        "python_aligned": 100,
+        "original_clones": 22,
+        "python_clones": 22,
+        "python_input_reads": 100,
+        "mismatch_count": 0
+      },
+      "evidence_status": "historical_local_run_summary"
+    },
+    {
+      "id": "official-igh-single",
+      "label": "Official IGH, single-end",
+      "input_unit": "reads",
+      "v_feature": "VRegionWithP",
+      "passed": true,
+      "counts": {
+        "alignment_fields_checked": 728,
+        "clone_fields_checked": 405,
+        "assignment_fields_checked": 279,
+        "original_aligned": 104,
+        "python_aligned": 104,
+        "original_clones": 45,
+        "python_clones": 45,
+        "python_input_reads": 200,
+        "mismatch_count": 0
+      },
+      "evidence_status": "historical_local_run_summary"
+    },
+    {
+      "id": "official-paired",
+      "label": "Official TRB, paired-end",
+      "input_unit": "read_pairs",
+      "v_feature": "VGeneWithP",
+      "passed": true,
+      "counts": {
+        "alignment_fields_checked": 693,
+        "clone_fields_checked": 198,
+        "assignment_fields_checked": 122,
+        "original_aligned": 99,
+        "python_aligned": 99,
+        "original_clones": 22,
+        "python_clones": 22,
+        "python_input_reads": 100,
+        "mismatch_count": 0
+      },
+      "evidence_status": "historical_local_run_summary"
+    },
+    {
+      "id": "official-igh",
+      "label": "Official IGH, paired-end",
+      "input_unit": "read_pairs",
+      "v_feature": "VRegionWithP",
+      "passed": true,
+      "counts": {
+        "alignment_fields_checked": 1183,
+        "clone_fields_checked": 774,
+        "assignment_fields_checked": 337,
+        "original_aligned": 169,
+        "python_aligned": 169,
+        "original_clones": 86,
+        "python_clones": 86,
+        "python_input_reads": 200,
+        "mismatch_count": 0
+      },
+      "evidence_status": "historical_local_run_summary"
+    }
+  ],
+  "extensions": {
+    "assembly_cases": {
+      "passed": 7,
+      "observed_mismatches": 0,
+      "features": [
+        "CDR1+CDR2+CDR3",
+        "CDR3+FR4",
+        "VDJRegion"
+      ],
+      "other_parameters": [
+        "separateByV",
+        "separateByV/J/C",
+        "maximalPreClusteringRatio=0"
+      ]
+    },
+    "cli_cases": {
+      "passed": 3,
+      "observed_mismatches": 0,
+      "paths": [
+        "FASTQ analyze",
+        "JSON reload assemble",
+        "V-separated analyze"
+      ],
+      "preclustered_labels_in_v_separation": 10
+    },
+    "feature_extraction": {
+      "paired_igh_field_groups": 1859,
+      "full_vdj_field_groups": 506,
+      "observed_mismatches": 0,
+      "fields": [
+        "sequence",
+        "quality",
+        "N-region coordinates"
+      ]
+    }
+  },
+  "partial_workflows": [
+    {
+      "id": "partial-fastq",
+      "input_records": 3,
+      "input_unit": "reads",
+      "clones": 2,
+      "checks": 21,
+      "observed_mismatches": 0
+    },
+    {
+      "id": "paired-igh-partial-fastq",
+      "input_records": 200,
+      "input_unit": "read_pairs",
+      "clones": 86,
+      "checks": 951,
+      "observed_mismatches": 0
+    },
+    {
+      "id": "partial-to-contig-fastq",
+      "input_records": 3,
+      "input_unit": "reads",
+      "clones": 2,
+      "checks_before_contigs": 21,
+      "contigs": 2,
+      "observed_mismatches": 0
+    }
+  ],
+  "contig_workflows": [
+    {
+      "id": "synthetic-trb",
+      "original_clones": 4,
+      "python_branches": 4,
+      "observed_mismatches": 0
+    },
+    {
+      "id": "official-igh-single",
+      "original_clones": 45,
+      "python_branches": 45,
+      "observed_mismatches": 0
+    },
+    {
+      "id": "official-igh",
+      "original_clones": 86,
+      "python_branches": 86,
+      "target_sequences": 89,
+      "clone_count_sum": 137,
+      "observed_mismatches": 0
+    }
+  ],
+  "contig_measured_fields": [
+    "CDR3",
+    "clone_count",
+    "target_sequence",
+    "target_quality",
+    "all_retained_V_D_J_C_names_and_scores",
+    "per_target_alignment_score",
+    "reference_query_ranges",
+    "complete_M_X_I_D_path"
+  ],
+  "original_java_oracle_checks": {
+    "random_hash_wildcard": 9000,
+    "assembly_mapping_formulas": 8493,
+    "clonal_VJ_banded_alignment": 500,
+    "multi_segment_compatibility": 2800,
+    "seed_mapper": 240,
+    "gene_extension_alignments": 776,
+    "paired_merge": 516,
+    "contig_point_variant_cluster_trim": 240,
+    "contig_read_to_point": 24,
+    "contig_selected_command_output_clones": 12,
+    "partial_single_target": 10,
+    "partial_paired_target": 10
+  },
+  "published_regression": {
+    "historical_tests_passed": 52,
+    "historical_subtests_passed": 2214,
+    "result_scope": "Recorded historical run; the current checkout result is determined by rerunning the published tests.",
+    "install_command": "python -m pip install ./python pytest pytest-subtests",
+    "test_command": "python -m pytest python/tests",
+    "test_directory": "python/tests",
+    "oracle_fixtures": [
+      {
+        "path": "python/tests/contig_oracle.json",
+        "sha256": "47fb40498519cdd6ed4f18f27f0af21604a4302208a71d273bf86235675ec571"
+      },
+      {
+        "path": "python/tests/contig_workflow_oracle.json",
+        "sha256": "b236c27fbb086a921179c75ae3ff07af5fced1a20c3dc4b8891ffc021ddcdb81"
+      },
+      {
+        "path": "python/tests/kalignment_oracle.json",
+        "sha256": "ad11ae47923cdccc0805718126e34ac36b46176bbe58fc8025001d2fabdbf59b"
+      },
+      {
+        "path": "python/tests/kmapper_oracle.json",
+        "sha256": "980f9c2500e10bd4b049d3c33057526b4a146f739b35efd69fc66196d4e6d288"
+      },
+      {
+        "path": "python/tests/merge_oracle.json",
+        "sha256": "26d63bce214efaeb0c2bc1f0bf2e3fd0dd3301ab1d9b82fc4416dd9f697c5b21"
+      },
+      {
+        "path": "python/tests/paired_oracle.json",
+        "sha256": "9793c90cd6dde263a1635e75bb9604618787bae3699feb3f26f3cb78e5a4c454"
+      },
+      {
+        "path": "python/tests/partial_multi_oracle.json",
+        "sha256": "1646a78e6e08917e61b7f4413bae3b3d8bff0257eef63bb2a09c70d8e19b8688"
+      },
+      {
+        "path": "python/tests/partial_oracle.json",
+        "sha256": "30795c755d0f8babd5d9394b43b1525b88981832005097cf561edf4ace12adf8"
+      },
+      {
+        "path": "python/tests/point_evidence_oracle.json",
+        "sha256": "c1b83a5d115608e6401301a5c3621a5e0ead413c7f23e83cde75f0286f1a3f4e"
+      }
+    ]
+  },
+  "offline_runtime_audit": {
+    "workflow": "200-pair official IGH FASTQ analyze",
+    "completed": true,
+    "child_process_and_network_creation_prohibited": true,
+    "blocked_operations": 0
+  },
+  "supported_profile": [
+    "exported human reference",
+    "default linear scoring",
+    "V-then-J",
+    "Max quality aggregation",
+    "Opposite paired layout",
+    "documented feature and gene-separation cases",
+    "default CDR3 contig workflow"
+  ],
+  "limitations": [
+    "KAligner2 requires implementation or verification",
+    "Other species and paired layouts require verification",
+    "Arbitrary scoring and composite features require further support",
+    "Alternate contig features and custom subCloningRegion require verification",
+    "Deferred mapping candidate tie order is incompletely sampled",
+    "Repetitive indel placement paths are incompletely sampled",
+    "Exceptional contig retention fallbacks are outside the three command datasets",
+    "Native vdjca/clns/clna I/O is outside this Python release",
+    "Performance, all-platform behavior and clinical suitability were not established"
+  ],
+  "license": {
+    "terms": "Historical MiXCR/MiLib research-license restrictions remain applicable",
+    "path": "python/LICENSE.mixcr",
+    "dependency_notice": "python/mixcrpy/data/NOTICE"
+  },
+  "documents": {
+    "english": "docs/validation.md",
+    "chinese": "docs/validation.zh-CN.md"
+  },
+  "publication_verification": {
+    "date": "2026-10-12",
+    "tests_passed": 52,
+    "subtests_passed": 2214,
+    "synthetic_example": {
+      "input_reads": 20,
+      "clones": 2,
+      "clone_counts": [
+        12,
+        8
+      ],
+      "single_paired_contig_smoke_passed": true,
+      "original_comparison_fields_checked": 220,
+      "mismatches": 0
+    },
+    "fresh_large_synthetic_comparison": {
+      "input_reads": 1039,
+      "field_checks": 10406,
+      "mismatches": 0
+    }
+  }
+}

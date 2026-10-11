@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mixcr-python-reconstruction"
+version = "0.2.0"
+description = "Python V(D)J alignment and CDR3 assembly with MiXCR 3.0.13 differential validation"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24"]
+readme = "README.md"
+license = {file = "LICENSE.mixcr"}
+
+[project.urls]
+Repository = "https://github.com/thekingofall/Biosoft-Project-MiXCR-Python"
+Documentation = "https://github.com/thekingofall/Biosoft-Project-MiXCR-Python/blob/main/docs/usage.md"
+
+[project.scripts]
+mixcrpy = "mixcrpy.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["mixcrpy*"]
+
+[tool.setuptools.package-data]
+mixcrpy = ["data/*.json", "data/LICENSE*", "data/NOTICE"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

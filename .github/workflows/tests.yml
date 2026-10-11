@@ -1,0 +1,23 @@
+name: Python validation
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.10', '3.12']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install ./python pytest
+      - run: python -m pytest python/tests -q
+      - run: python -m mixcrpy analyze examples/trb.fastq results/single --chains TRB
+      - run: python -m mixcrpy analyze examples/trb_R1.fastq results/paired --read2 examples/trb_R2.fastq --chains TRB
+      - run: python -m mixcrpy assemble-contigs results/single.alignments.json results/single.clones.json results/contigs
+      - run: python scripts/check_example.py results
